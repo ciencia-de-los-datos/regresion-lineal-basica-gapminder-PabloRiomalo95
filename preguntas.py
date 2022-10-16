@@ -1,9 +1,7 @@
 """
 Regresión Lineal Univariada
 -----------------------------------------------------------------------------------------
-
 En este laboratio se construirá un modelo de regresión lineal univariado.
-
 """
 import numpy as np
 import pandas as pd
@@ -15,17 +13,19 @@ def pregunta_01():
     Complete el código presentado a continuación.
     """
     # Lea el archivo `gm_2008_region.csv` y asignelo al DataFrame `df`
-    df = ____
+    df = pd.read_csv('gm_2008_region.csv',sep=',')
 
     # Asigne la columna "life" a `y` y la columna "fertility" a `X`
-    y = ____[____].____
-    X = ____[____].____
+    y = df['life']
+    # y=____[____].____
+    X = df['fertility']
+    # X = ____[____].____
 
     # Imprima las dimensiones de `y`
-    print(____.____)
+    print(y.shape)
 
     # Imprima las dimensiones de `X`
-    print(____.____)
+    print(X.shape)
 
     # Transforme `y` a un array de numpy usando reshape
     y_reshaped = y.reshape(____, ____)
