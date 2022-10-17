@@ -42,27 +42,31 @@ def pregunta_01():
 
 def pregunta_02():
     """
-    En este punto se realiza la impresión de algunas estadísticas básicas
-    Complete el código presentado a continuación.
+    En este punto se realiza la impresiÃ³n de algunas estadÃ­sticas bÃ¡sicas
+    Complete el cÃ³digo presentado a continuaciÃ³n.
     """
-
     # Lea el archivo `gm_2008_region.csv` y asignelo al DataFrame `df`
-    df = pd.read_csv('gm_2008_region.csv',sep=',')
-
+    df = pd.read_csv(fp+'gm_2008_region.csv',sep=',')
+    
     # Imprima las dimensiones del DataFrame
+    print('Imprima las dimensiones del DataFrame')
     print(df.shape)
-
-    # Imprima la correlación entre las columnas `life` y `fertility` con 4 decimales.
-    print(____)
-
+    
+    # Imprima la correlaciÃ³n entre las columnas `life` y `fertility` con 4 decimales.
+    correl=round(df['life'].corr(df['fertility'],method='pearson'),4)
+    print(correl)
+    
     # Imprima la media de la columna `life` con 4 decimales.
-    print(____)
-
+    media=round(df['life'].mean(),4)
+    print(media)
+    
     # Imprima el tipo de dato de la columna `fertility`.
-    print(____)
-
-    # Imprima la correlación entre las columnas `GDP` y `life` con 4 decimales.
-    print(____)
+    tipo=type(df['life'])
+    print(tipo)
+    
+    # Imprima la correlaciÃ³n entre las columnas `GDP` y `life` con 4 decimales.
+    correl2=round(df['GDP'].corr(df['life'],method='pearson'),4)
+    print(correl2)
 
 
 def pregunta_03():
