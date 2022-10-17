@@ -110,45 +110,57 @@ def pregunta_03():
     print(r2)
 
 
+
 def pregunta_04():
     """
     Particionamiento del conjunto de datos usando train_test_split.
-    Complete el código presentado a continuación.
+    Complete el cÃ³digo presentado a continuaciÃ³n.
     """
 
     # Importe LinearRegression
+    from sklearn.linear_model import LinearRegression
     # Importe train_test_split
+    from sklearn.model_selection import train_test_split
     # Importe mean_squared_error
-    from ____ import ____
-
+    from sklearn.metrics import confusion_matrix,mean_squared_error
+    
     # Lea el archivo `gm_2008_region.csv` y asignelo al DataFrame `df`
-    df = ____
-
+    df = pd.read_csv('gm_2008_region.csv',sep=',')
+    
     # Asigne a la variable los valores de la columna `fertility`
-    X_fertility = ____
-
+    X_fertility = df['fertility'].values.reshape(-1,1)
+    
     # Asigne a la variable los valores de la columna `life`
-    y_life = ____
-
-    # Divida los datos de entrenamiento y prueba. La semilla del generador de números
-    # aleatorios es 53. El tamaño de la muestra de entrenamiento es del 80%
-    (X_train, X_test, y_train, y_test,) = ____(
-        ____,
-        ____,
-        test_size=____,
-        random_state=____,
+    y_life = df['life'].values.reshape(-1,1)
+    
+    
+    # Divida los datos de entrenamiento y prueba. La semilla del generador de nÃºmeros
+    # aleatorios es 53. El tamaÃ±o de la muestra de entrenamiento es del 80%
+    (X_train, X_test, y_train, y_test,) = train_test_split(
+        X_fertility,
+        y_life,
+        test_size=0.2,
+        random_state=53,
     )
-
-    # Cree una instancia del modelo de regresión lineal
-    linearRegression = ____
-
+    
+    
+    # Cree una instancia del modelo de regresiÃ³n lineal
+    linearRegression = LinearRegression(
+        # Ajusta el intercepto?
+        fit_intercept=True,
+        # Normaliza los datos?
+        # Se ignora si fit_intercept=True.
+        normalize=False,
+        )
+    
     # Entrene el clasificador usando X_train y y_train
-    ____.fit(____, ____)
-
+    linearRegression.fit(X_train,y_train)
+    
     # Pronostique y_test usando X_test
-    y_pred = ____
-
+    y_pred = linearRegression.predict(X_test)
+    
     # Compute and print R^2 and RMSE
     print("R^2: {:6.4f}".format(linearRegression.score(X_test, y_test)))
-    rmse = np.sqrt(____(____, ____))
+    # rmse = np.sqrt(____(____, ____))
+    rmse = mean_squared_error(y_test,y_pred,squared=False)
     print("Root Mean Squared Error: {:6.4f}".format(rmse))
