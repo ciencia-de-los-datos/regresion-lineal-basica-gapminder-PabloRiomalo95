@@ -49,7 +49,6 @@ def pregunta_02():
     df = pd.read_csv(fp+'gm_2008_region.csv',sep=',')
     
     # Imprima las dimensiones del DataFrame
-    print('Imprima las dimensiones del DataFrame')
     print(df.shape)
     
     # Imprima la correlaciÃ³n entre las columnas `life` y `fertility` con 4 decimales.
