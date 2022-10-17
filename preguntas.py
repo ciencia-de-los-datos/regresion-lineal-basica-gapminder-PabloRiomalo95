@@ -71,21 +71,20 @@ def pregunta_02():
 def pregunta_03():
     """
     Entrenamiento del modelo sobre todo el conjunto de datos.
-    Complete el código presentado a continuación.
+    Complete el cÃ³digo presentado a continuaciÃ³n.
     """
-
     # Lea el archivo `gm_2008_region.csv` y asignelo al DataFrame `df`
-    df = pd.read_csv('gm_2008_region.csv',sep=',')
-
+    df = pd.read_csv(fp+'gm_2008_region.csv',sep=',')
+    
     # Asigne a la variable los valores de la columna `fertility`
-    X_fertility=df['fertility']
-
+    X_fertility=df['fertility'].values.reshape(-1,1)
+    
     # Asigne a la variable los valores de la columna `life`
-    y_life=df['life']
-
+    y_life=df['life'].values.reshape(-1,1)
+    
     # Importe LinearRegression
     from sklearn.linear_model import LinearRegression
-
+    
     # Cree una instancia del modelo de regresiÃ³n lineal
     reg = LinearRegression(
         # Ajusta el intercepto?
@@ -94,19 +93,20 @@ def pregunta_03():
         # Se ignora si fit_intercept=True.
         normalize=False,
     )
-
+    
     # Cree El espacio de predicciÃ³n. Esto es, use linspace para crear
     # un vector con valores entre el mÃ¡ximo y el mÃ­nimo de X_fertility
     prediction_space = np.linspace(X_fertility.min(), X_fertility.max()).reshape(-1,1)
-
+    
+    
     # Entrene el modelo usando X_fertility y y_life
     reg.fit(X_fertility,y_life)
-
+    
     # Compute las predicciones para el espacio de predicción
     y_pred = reg.predict(prediction_space)
-
+    
     # Imprima el R^2 del modelo con 4 decimales
-    r2=round(LinearRegression.score(X_fertility,y_pred),4)
+    r2=round(reg.score(X_fertility,y_life),4)
     print(r2)
 
 
