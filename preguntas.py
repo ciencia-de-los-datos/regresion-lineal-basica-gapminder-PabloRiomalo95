@@ -46,7 +46,7 @@ def pregunta_02():
     Complete el cÃ³digo presentado a continuaciÃ³n.
     """
     # Lea el archivo `gm_2008_region.csv` y asignelo al DataFrame `df`
-    df = pd.read_csv(fp+'gm_2008_region.csv',sep=',')
+    df = pd.read_csv('gm_2008_region.csv',sep=',')
     
     # Imprima las dimensiones del DataFrame
     print(df.shape)
