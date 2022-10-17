@@ -28,10 +28,10 @@ def pregunta_01():
     print(X.shape)
 
     # Transforme `y` a un array de numpy usando reshape
-    y_reshaped = y.reshape(y, (1,len(y)))
+    y_reshaped = y.values.reshape(-1,1)
 
     # Trasforme `X` a un array de numpy usando reshape
-    X_reshaped = X.reshape(X, (1,len(y)))
+    X_reshaped = X.values.reshape(-1,1)
 
     # Imprima las nuevas dimensiones de `y`
     print(y_reshaped.shape)
@@ -47,10 +47,10 @@ def pregunta_02():
     """
 
     # Lea el archivo `gm_2008_region.csv` y asignelo al DataFrame `df`
-    df = ____
+    df = pd.read_csv('gm_2008_region.csv',sep=',')
 
     # Imprima las dimensiones del DataFrame
-    print(____.____)
+    print(df.shape)
 
     # Imprima la correlación entre las columnas `life` y `fertility` con 4 decimales.
     print(____)
